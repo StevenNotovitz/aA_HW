@@ -1,0 +1,72 @@
+body {
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    background-color: lightcyan;
+}
+
+h1 {
+    font-size: 38px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+.ingredients-list {
+    list-style: square inside;
+    padding-left: 10px;
+}
+
+ol {
+    list-style: upper-roman inside;
+    padding-left: 10px;
+}
+
+header > img {
+    width: 100px;
+}
+
+ul > li > a {
+    text-decoration: none;
+}
+
+.user_review {
+    font-style: italic;
+}
+
+select {
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    width: 27px;
+    height: 27px;
+    background-image: url(./stars.png);
+    vertical-align: bottom;
+}
+
+input[type="radio"]:hover {
+  background-position: 30px 60px;
+}
+
+input[type="radio"]:checked {
+  background-position: 30px 30px;
+}
+
+input:last-child {
+    background-color: gold;
+}
+
+input:last-child:hover {
+    background-color: darkgoldenrod;
+}
+
+ol > li:nth-child(odd) {
+    background-color: lightgray;
+}
+
+h2 + .user_review {
+    border-top: 1px solid black;
+}
