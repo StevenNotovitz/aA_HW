@@ -43,9 +43,7 @@ end
 
 def reverse(string)
     return '' if string.length == 0
-    s = ''
-    s += string[-1] + reverse(string[0...-1])
-    s
+    string[-1] + reverse(string[0..-2])
 end
 # p reverse("house") # => "esuoh"
 # p reverse("dog") # => "god"
