@@ -32,7 +32,6 @@ end
 
 def ice_cream_shop(flavors, favorite)
     return false if flavors.length == 0
-    return true if flavors[0] == favorite
     flavors[0] == favorite || ice_cream_shop(flavors[1..-1], favorite)
 end
 # p ice_cream_shop(['vanilla', 'strawberry'], 'blue moon')  # => returns false
