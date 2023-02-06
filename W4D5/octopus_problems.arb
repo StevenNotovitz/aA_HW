@@ -1,0 +1,14 @@
+school = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 
+ 'fiiiissshhhhhh'] # => "fiiiissshhhhhh"
+
+def sluggish_octopus(school)
+    school.each_with_index do |fish_1|
+        biggest = true
+        school.each_with_index do |fish_2|
+            biggest = false if fish_2.size > fish_1.size
+        end
+        return fish_1 if biggest
+    end
+end
+
+def 
