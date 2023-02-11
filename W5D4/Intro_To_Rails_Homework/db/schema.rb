@@ -15,10 +15,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_222852) do
   enable_extension "plpgsql"
 
   create_table "houses", force: :cascade do |t|
-    t.string "address", null: false
+    t.string "address", null: false, uniqueness: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address"], name: "index_houses_on_address", unique: true
+    t.index ["address"], name: "index_houses_on_address"
   end
 
   create_table "people", force: :cascade do |t|
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_222852) do
     t.integer "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["house_id"], name: "index_people_on_house_id", unique: true
+    t.index ["house_id"], name: "index_people_on_house_id"
     t.index ["name"], name: "index_people_on_name"
   end
 

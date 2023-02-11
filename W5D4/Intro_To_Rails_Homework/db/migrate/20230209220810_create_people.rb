@@ -7,6 +7,6 @@ class CreatePeople < ActiveRecord::Migration[7.0]
     end
 
     add_index :people, :name
-    add_index :people, :house_id, unique: true
+    add_index :people, :house_id
   end
 end
