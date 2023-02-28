@@ -22,7 +22,7 @@ Elephant.prototype.addTrick = function (trick) {
     this.tricks.push(trick)
 }
 Elephant.prototype.play = function () {
-    i = Math.floor(Math.random())*this.tricks.length
+    let i = Math.floor(Math.random())*this.tricks.length
     console.log(`${this.name} is ${this.tricks[i]}!`)
 }
 let ellie = new Elephant("Ellie", 185, ["giving human friends a ride", "playing hide and seek"]);
