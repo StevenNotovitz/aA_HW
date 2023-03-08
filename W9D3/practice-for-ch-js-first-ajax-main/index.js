@@ -13,17 +13,19 @@ let request = new Request("https://api.openweathermap.org/data/2.5/weather?q=Lon
 //     return response.json()
 // })
 
-fetch(request).then(response => {
-    if (!response.ok) {
-      throw new Error(response)
-    }
-    return response.json()
-}).then(response => {
-    if (!response.ok) {
-        console.log('Failure!')
-    } else {
-        console.log('Success!')
-    }
-})
+fetch(request)
+    .then(response => {
+        if (!response.ok) {
+        throw new Error(response)
+        }
+        return response.json()
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.log('Failure!')
+        } else {
+            console.log('Success!')
+        }
+    })
 
 console.log('The AJAX request has been dispatched.')
