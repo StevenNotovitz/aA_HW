@@ -6,26 +6,23 @@ let request = new Request("https://api.openweathermap.org/data/2.5/weather?q=Lon
 
 // fetch(request)
 
-// fetch(request).then((response) => {
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`)
-//     }
-//     return response.json()
-// })
+// fetch(request)
+//     .then((response) => {
+//         if (!response.ok) throw new Error(response)
+//         return response.json()
+//     })
 
 fetch(request)
     .then(response => {
-        if (!response.ok) {
-        throw new Error(response)
-        }
+        if (!response.ok) throw new Error(response)
         return response.json()
     })
-    .then(response => {
-        if (!response.ok) {
-            console.log('Failure!')
-        } else {
-            console.log('Success!')
-        }
+    .then(data => {
+        console.log("Success!")
+        console.log(data)
+    }).catch(errorResponse => {
+        console.log("Failure!")
+        console.error(errorResponse)
     })
 
 console.log('The AJAX request has been dispatched.')
