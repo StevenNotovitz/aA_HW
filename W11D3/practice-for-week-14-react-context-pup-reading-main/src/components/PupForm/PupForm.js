@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import banana from '../../pups/banana-pup.jpg';
 import sleepy from '../../pups/sleepy-pup.jpg';
 import speedy from '../../pups/speedy-pup.jpg';
