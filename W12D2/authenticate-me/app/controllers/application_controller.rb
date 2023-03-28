@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
 
-  before_action :snake_case_params
+  protect_from_forgery with: :exception
+  before_action :snake_case_params, :attach_authenticity_token
 
   def current_user
     @current_user ||= User.find_by(session_token: session[:session_token])
@@ -16,10 +17,20 @@ class ApplicationController < ActionController::API
     @current_user = nil
   end
   
-  def require_logged_in
-    unless current_user
-      render json: { message: 'Unauthorized' }, status: :unauthorized
+  def ensure_logged_in
+    unless logged_in?
+      render json: { message: 'Must be logged in' }, status: :unauthorized
     end
+  end
+
+  def ensure_logged_out
+    if logged_in?
+      render json: { message: 'Must be logged out' }, status: :unauthorized
+    end
+  end
+
+  def logged_in?
+    !!current_user
   end
 
   def test
@@ -40,6 +51,10 @@ class ApplicationController < ActionController::API
 
   def snake_case_params
     params.deep_transform_keys!(&:underscore)
+  end
+
+  def attach_authenticity_token
+    
   end
 
 end
