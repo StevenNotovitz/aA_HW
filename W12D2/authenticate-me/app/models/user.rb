@@ -9,9 +9,8 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#
-class User < ApplicationRecord
 
+class User < ApplicationRecord
   has_secure_password
   before_validation :ensure_session_token
   validates :username, 
@@ -26,7 +25,7 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..255 }, allow_nil: true
 
   def self.find_by_credentials(credential, password)
-    credential == URI::MailTo::EMAIL_REGEXP ?
+    credential =~ URI::MailTo::EMAIL_REGEXP ?
       user = User.find_by(email: credential) :
       user = User.find_by(username: credential)
     if user&.authenticate(password)
@@ -36,7 +35,8 @@ class User < ApplicationRecord
   end
 
   def reset_session_token!
-    update!(session_token => generate_unique_session_token)
+    self.session_token = generate_unique_session_token
+    save!
     session_token
   end
 
